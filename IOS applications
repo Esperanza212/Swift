@@ -1,0 +1,35 @@
+import SwiftUI
+
+struct ContentView: View {
+    @State private var userInput: String = ""
+    @State private var displayedText: String = ""
+    
+    var body: some View {
+        VStack {
+            TextField("Enter text", text: $userInput)
+                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
+            Button(action: {
+                self.displayedText = self.userInput
+                self.userInput = ""
+            }) {
+                Text("Display Text")
+                    .padding()
+                    .background(Color.green)
+                    .foregroundColor(Color.white)
+                    .cornerRadius(10)
+            }
+            
+            Text(displayedText)
+                .padding()
+        }
+        .padding()
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
